@@ -5,3 +5,12 @@ services:
 script:
   - docker build -t sirboots560/node . 
   - docker images sirboots560/node 
+
+before_deploy:
+  - docker login -u sirboots560 -p !dA02D33shYj
+
+deploy:
+  provider: script
+  script: docker push sirboots560/node
+  on:
+    branch: master
