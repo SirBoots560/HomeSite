@@ -1,0 +1,14 @@
+version: '3'
+services:
+    web_host:
+        image: nginx:latest
+        ports:
+            - '90:80'
+        volumes:
+                - ./hs-backend/nginx.conf /etc/nginx/conf.d/nginx.conf
+                - ./hs-backend/app /app
+
+    front_end:
+        image: sirboots560/homesite-frontend
+        ports:
+            - '80:80'
