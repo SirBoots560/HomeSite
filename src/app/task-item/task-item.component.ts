@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskItemComponent implements OnInit {
 
+  title = 'Wash Dishes';
+  category = 'Cleaning';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  wasComplete(){
+    return false;
   }
 
 }
