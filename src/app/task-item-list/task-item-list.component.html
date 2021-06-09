@@ -1,1 +1,8 @@
-<p>task-item-list works!</p>
+<section>
+    <div *ngFor="let taskItem of taskItems">
+        <hs-task-item
+            *ngIf="!taskItem.complete" 
+            [taskItem]="taskItem"
+            (delete)="onTaskItemDelete($event)"></hs-task-item>
+    </div>
+  </section>

@@ -7,15 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hs-frontend';
-
-  firstTaskItem = {
-    id: 1,
-    title: 'Wash Dishes',
-    category: 'Cleaning',
-    complete: false
-  };
-
-  onTaskItemDelete(taskItem: any){
-
-  }
 }
