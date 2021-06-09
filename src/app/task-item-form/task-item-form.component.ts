@@ -12,4 +12,8 @@ export class TaskItemFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(taskItem: any){
+    console.log(taskItem);
+  }
+
 }

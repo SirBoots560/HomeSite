@@ -1,7 +1,9 @@
 <header>
   <h2>Add Task to complete</h2>
 </header>
-<form>
+<form
+    #taskItemForm="ngForm"
+    (ngSubmit)="onSubmit(taskItemForm)">
   <ul>
     <li>
       <label for="name">Task</label>
