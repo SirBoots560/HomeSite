@@ -1,8 +1,7 @@
 <section>
-    <div *ngFor="let taskItem of taskItems">
         <hs-task-item
-            *ngIf="!taskItem.complete" 
+            [ngClass]="{'medium-movies': taskItem.category==='Cats', 'medium-series': taskItem.category==='Cleaning'}"
+            *ngFor="let taskItem of taskItems" 
             [taskItem]="taskItem"
             (delete)="onTaskItemDelete($event)"></hs-task-item>
-    </div>
   </section>
