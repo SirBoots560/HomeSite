@@ -21,9 +21,13 @@ export class TaskItemFormComponent implements OnInit {
   }
 
   ngOnInit(){}
-  
+
   onSubmit(taskItem: any){
     console.log(taskItem);
   }
 
+
+  get title(){
+    return this.form.controls['title'];
+  }
 }

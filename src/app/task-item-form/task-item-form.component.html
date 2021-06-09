@@ -9,6 +9,15 @@
       <label for="name">Task</label>
       <input type="text" name="title" id="name" formControlName="title">
     </li>
+
+    <!--Error Displays-->
+    <div *ngIf="title.hasError('required')" class="error">
+      Task must contain a value!
+    </div>
+    <div *ngIf="title.hasError('pattern')" class="error">
+      Task must be alphanumeric!
+    </div>
+
     <li>
       <label for="category">Category</label>
       <select name="category" id="category" formControlName="category">
