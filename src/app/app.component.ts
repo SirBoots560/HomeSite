@@ -13,5 +13,9 @@ export class AppComponent {
     title: 'Wash Dishes',
     category: 'Cleaning',
     complete: false
+  };
+
+  onTaskItemDelete(taskItem: any){
+
   }
 }

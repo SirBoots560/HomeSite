@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'hs-task-item',
@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TaskItemComponent implements OnInit {
 
   @Input() taskItem: any;
+  @Output() delete = new EventEmitter();
 
   constructor() { }
 
@@ -19,7 +20,7 @@ export class TaskItemComponent implements OnInit {
   }
 
   onDelete(){
-    console.log("Delete");
+    this.delete.emit(this.taskItem);
   }
 
 }
