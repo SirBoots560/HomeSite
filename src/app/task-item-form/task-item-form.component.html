@@ -21,9 +21,14 @@
     <li>
       <label for="category">Category</label>
       <select name="category" id="category" formControlName="category">
-        <option value="Cleaning">Cleaning</option>
-        <option value="Cats">Cats</option>
+        <option *ngFor='let category of lookupLists.categories' value="{{ category }}">{{ category }}</option>
       </select>
+
+      <!--More Error Displays-->
+      <div *ngIf="title.hasError('required')" class="error">
+        Category must be selected!
+      </div>
+
     </li>
   </ul>
   <button type="submit" [disabled]="!form.valid">Save</button>

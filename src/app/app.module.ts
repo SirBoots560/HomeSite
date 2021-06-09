@@ -8,6 +8,10 @@ import { TaskItemListComponent } from './task-item-list/task-item-list.component
 import { TaskItemFormComponent } from './task-item-form/task-item-form.component';
 import { CategoryListPipe } from './category-list.pipe';
 
+const lookupLists = {
+  categories: ['Cleaning', 'Cats']
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +25,9 @@ import { CategoryListPipe } from './category-list.pipe';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{
+    provide: 'lookupListToken', useValue: lookupLists
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

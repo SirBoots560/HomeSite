@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {TaskItemService } from '../task-item.service';
 
@@ -11,13 +11,15 @@ export class TaskItemFormComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private taskItemService: TaskItemService) { 
+  constructor(private formBuilder: FormBuilder, 
+              private taskItemService: TaskItemService,
+              @Inject('lookupListToken') public lookupLists: any) { 
     this.form = this.formBuilder.group({
       title: this.formBuilder.control('', Validators.compose([
         Validators.required,
         Validators.pattern('[\\w\\-\\s\\/]+')
       ])),
-      category: this.formBuilder.control('Cleaning'),
+      category: this.formBuilder.control('', Validators.required),
     });
   }
 
@@ -30,5 +32,9 @@ export class TaskItemFormComponent implements OnInit {
 
   get title(){
     return this.form.controls['title'];
+  }
+
+  get category(){
+    return this.form.controls['category'];
   }
 }
