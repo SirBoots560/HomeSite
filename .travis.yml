@@ -3,14 +3,14 @@ services:
   - docker
 
 script:
-  - docker build -t sirboots560/homesite-frontend . 
-  - docker images sirboots560/homesite-frontend 
+  - docker-compose build -t sirboots560/homesite . 
+  - docker images sirboots560/homesite 
 
 before_deploy:
   - docker login -u sirboots560 -p !dA02D33shYj
 
 deploy:
   provider: script
-  script: docker push sirboots560/homesite-frontend
+  script: docker push sirboots560/homesite
   on:
     branch: master
