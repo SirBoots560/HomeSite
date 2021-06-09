@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-task-item',
+  selector: 'hs-task-item',
   templateUrl: './task-item.component.html',
   styleUrls: ['./task-item.component.css']
 })
