@@ -19,4 +19,8 @@ export class TaskItemComponent implements OnInit {
     return false;
   }
 
+  onDelete(){
+    console.log("Delete");
+  }
+
 }
