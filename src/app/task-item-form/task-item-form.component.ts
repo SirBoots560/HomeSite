@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import {TaskItemService } from '../task-item.service';
 
 @Component({
   selector: 'hs-task-item-form',
@@ -10,7 +11,7 @@ export class TaskItemFormComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder, private taskItemService: TaskItemService) { 
     this.form = this.formBuilder.group({
       title: this.formBuilder.control('', Validators.compose([
         Validators.required,
@@ -23,7 +24,7 @@ export class TaskItemFormComponent implements OnInit {
   ngOnInit(){}
 
   onSubmit(taskItem: any){
-    console.log(taskItem);
+    this.taskItemService.add(taskItem);
   }
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TaskItemService } from '../task-item.service';
 
 @Component({
   selector: 'hs-task-item-list',
@@ -6,32 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-item-list.component.css']
 })
 export class TaskItemListComponent implements OnInit {
-  taskItems = [
-    {
-      id: 1,
-      title: 'Wash Dishes',
-      category: 'Cleaning',
-      complete: false
-    },
-    {
-      id: 2,
-      title: 'Big Kids Litter',
-      category: 'Cats',
-      complete: false
-    },
-    {
-      id: 3,
-      title: 'Little Kids Litter',
-      category: 'Cats',
-      complete: false
-    }
-  ];
-  constructor() { }
+  taskItems: any;
+
+  constructor(private taskItemService: TaskItemService) { }
 
   ngOnInit(): void {
+    this.taskItems = this.taskItemService.get();
   }
 
   onTaskItemDelete(taskItem: any) { 
-    console.log("Deleted Item");
+    this.taskItemService.delete(taskItem);
   }
 }
