@@ -2,16 +2,16 @@
   <h2>Add Task to complete</h2>
 </header>
 <form
-    #taskItemForm="ngForm"
-    (ngSubmit)="onSubmit(taskItemForm)">
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form.value)">
   <ul>
     <li>
       <label for="name">Task</label>
-      <input type="text" name="title" id="name">
+      <input type="text" name="title" id="name" formControlName="title">
     </li>
     <li>
       <label for="category">Category</label>
-      <select name="category" id="category">
+      <select name="category" id="category" formControlName="category">
         <option value="Cats">Cats</option>
         <option value="Cleaning">Cleaning</option>
       </select>
