@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'hs-task-item',
@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskItemComponent implements OnInit {
 
-  title = 'Wash Dishes';
-  category = 'Cleaning';
+  @Input() taskItem: any;
 
   constructor() { }
 
@@ -16,7 +15,7 @@ export class TaskItemComponent implements OnInit {
   }
 
   wasComplete(){
-    return false;
+    return this.taskItem.complete;
   }
 
   onDelete(){
