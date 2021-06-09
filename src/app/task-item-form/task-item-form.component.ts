@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'hs-task-item-form',
@@ -10,13 +10,13 @@ export class TaskItemFormComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor() { 
-    this.form = new FormGroup({
-      title: new FormControl('', Validators.compose([
+  constructor(private formBuilder: FormBuilder) { 
+    this.form = this.formBuilder.group({
+      title: this.formBuilder.control('', Validators.compose([
         Validators.required,
         Validators.pattern('[\\w\\-\\s\\/]+')
       ])),
-      category: new FormControl('Cats'),
+      category: this.formBuilder.control('Cleaning'),
     });
   }
 
