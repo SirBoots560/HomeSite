@@ -1,36 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TaskItemService {
+export class TaskItemService implements OnInit{
 
-  taskItems = [
-    {
-      id: 1,
-      title: 'Wash Dishes',
-      category: 'Cleaning',
-      complete: false
-    },
-    {
-      id: 2,
-      title: 'Big Kids Litter',
-      category: 'Cats',
-      complete: false
-    },
-    {
-      id: 3,
-      title: 'Little Kids Litter',
-      category: 'Cats',
-      complete: false
-    }
-  ];
+  taskItems:any = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  get(){
-    return this.taskItems;
+  ngOnInit(){
+    
   }
+
+  get(): Observable<TaskItemsResponse> {
+    const url = 'http://localhost:90/get';
+
+    return this.http.get<TaskItemsResponse>(url);
+    
+  }
+    
 
   add(taskItem: any){
     this.taskItems.push(taskItem);
@@ -42,4 +33,15 @@ export class TaskItemService {
       this.taskItems.splice(index, 1);
     }
   }
+}
+
+export interface TaskItemsResponse {
+  taskItems: TaskItem[];
+}
+
+export interface TaskItem {
+  id: number,
+  title: string,
+  category: string,
+  complete: boolean
 }

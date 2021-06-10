@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import {TaskItemService } from '../task-item.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { TaskItemService } from '../task-item.service';
+import { lookupListToken } from '../providers';
 
 @Component({
   selector: 'hs-task-item-form',
@@ -13,7 +14,7 @@ export class TaskItemFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, 
               private taskItemService: TaskItemService,
-              @Inject('lookupListToken') public lookupLists: any) { 
+              @Inject(lookupListToken) public lookupLists: any) { 
     this.form = this.formBuilder.group({
       title: this.formBuilder.control('', Validators.compose([
         Validators.required,
