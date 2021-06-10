@@ -7,10 +7,7 @@ import { TaskItemComponent } from './task-item/task-item.component';
 import { TaskItemListComponent } from './task-item-list/task-item-list.component';
 import { TaskItemFormComponent } from './task-item-form/task-item-form.component';
 import { CategoryListPipe } from './category-list.pipe';
-
-const lookupLists = {
-  categories: ['Cleaning', 'Cats']
-};
+import { lookupListToken, lookupLists } from './providers';
 
 @NgModule({
   declarations: [
@@ -26,7 +23,7 @@ const lookupLists = {
     AppRoutingModule
   ],
   providers: [{
-    provide: 'lookupListToken', useValue: lookupLists
+    provide: lookupListToken, useValue: lookupLists
   }],
   bootstrap: [AppComponent]
 })
