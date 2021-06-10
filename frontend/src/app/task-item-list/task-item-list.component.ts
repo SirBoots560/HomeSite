@@ -8,14 +8,24 @@ import {TaskItemService } from '../task-item.service';
 })
 export class TaskItemListComponent implements OnInit {
   taskItems: any;
+  category = '';
 
   constructor(private taskItemService: TaskItemService) { }
 
   ngOnInit(): void {
-    this.taskItems = this.taskItemService.get();
+    this.getTaskItems(this.category);
   }
+
+  
 
   onTaskItemDelete(taskItem: any) { 
     this.taskItemService.delete(taskItem);
+  }
+  
+  getTaskItems(category: string){
+    this.category = category;
+    this.taskItemService.get().subscribe(tasks => {
+      this.taskItems = tasks;
+    });
   }
 }
