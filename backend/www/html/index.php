@@ -1,17 +1,22 @@
 <?php
 
-if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
+function sendResponse($data){
+    header('Access-Control-Allow-Origin: http://localhost', false);
+    header('Content-Type: application/json');
+    echo $data;
+}
+
+
+    $data;
     $path = ltrim($_SERVER['REQUEST_URI'], '/');    
     $elements = explode('/', $path);                
 
-    if(empty($elements[0])) {                       
-        echo 'NAILED IT!';
-    } else{ 
+    if($_SERVER['REQUEST_METHOD'] == 'GET'){
         switch(array_shift($elements)){             
 
             case 'get':                             
-                $post_data = array( array(  'id' => 1,
+                $data = array( array(  'id' => 1,
                                             'title' => 'Task',
                                             'category' => 'Cleaning',
                                             'complete' => false),
@@ -22,22 +27,29 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
                                     array(  'id' => 3,
                                             'title' => 'Task-3',
                                             'category' => 'Cleaning',
+                                            'complete' => false),
+                                    array(  'id' => 4,
+                                            'title' => 'Task-4',
+                                            'category' => 'Cats',
                                             'complete' => false)
                                 );
-        
-                $post_data = json_encode($post_data);
+                                
+                $data = json_encode($data);
                 break;
 
             default:                                
-                $include = 'src/php/pages/error.php';
-                $error = "404 - Not Found";
-                $title = 'Error';
-                break;
-        }
-        header('Access-Control-Allow-Origin: http://localhost', false);
-        header('Content-Type: application/json');
-        echo $post_data;
+                http_response_code(404);
+                echo("Error Not Found");
+                die();
+        } 
+    } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    } else {
+        http_response_code(404);
+        echo("Error Not Found");
+        die();
     }
-}
+    
+    sendResponse($data);
 
 ?>
