@@ -13,13 +13,16 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             case 'get':                             
                 $post_data = array( array(  'id' => 1,
                                             'title' => 'Task',
-                                            'category' => 'Cleaning'),
+                                            'category' => 'Cleaning',
+                                            'complete' => false),
                                     array(  'id' => 2,
                                             'title' => 'Task-2',
-                                            'category' => 'Cleaning'),
+                                            'category' => 'Cleaning',
+                                            'complete' => false),
                                     array(  'id' => 3,
                                             'title' => 'Task-3',
-                                            'category' => 'Cleaning')
+                                            'category' => 'Cleaning',
+                                            'complete' => false)
                                 );
         
                 $post_data = json_encode($post_data);
@@ -31,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 $title = 'Error';
                 break;
         }
-
+        header('Access-Control-Allow-Origin: http://localhost', false);
         header('Content-Type: application/json');
         echo $post_data;
     }
