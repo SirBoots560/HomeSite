@@ -1,14 +1,27 @@
 version: '3'
 services:
     web_host:
-        image: nginx:latest
+        build: ./backend/nginx/
+        container_name: nginx-container
         ports:
             - '90:90'
+<<<<<<< HEAD
+=======
+        links:
+            - php
+>>>>>>> dev
         volumes:
-                - ./hs-backend/nginx.conf /etc/nginx/conf.d/nginx.conf
-                - ./hs-backend/app /app
+            - ./backend/www/html:/usr/share/nginx/html/
+    
+    php:
+        image: php:7.0-fpm
+        container_name: php-container
+        volumes:
+            - ./backend/www/html:/usr/share/nginx/html/
 
     front_end:
-        image: sirboots560/homesite-frontend
+        build: ./frontend/
+        container_name: front_end
         ports:
             - '80:80'
+      
