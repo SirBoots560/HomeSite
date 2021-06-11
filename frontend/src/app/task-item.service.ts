@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class TaskItemService implements OnInit{
 
   taskItems:any = [];
+  url = 'http://localhost:90';
 
   constructor(private http: HttpClient) { }
 
@@ -16,18 +17,18 @@ export class TaskItemService implements OnInit{
   }
 
   get(category:any): Observable<TaskItemsResponse> {
-    const url = 'http://localhost:90/get';
+    const url = this.url + '/get';
     const getOptions = {
       params: { category }
     };
-    console.log(this.http.get<TaskItemsResponse>(url));
     return this.http.get<TaskItemsResponse>(url, getOptions);
-    
   }
     
 
   add(taskItem: any){
-    this.taskItems.push(taskItem);
+    const url = this.url + '/add';
+    console.log("SENT!");
+    return this.http.post(url, taskItem);
   }
 
   delete(taskItem: any){

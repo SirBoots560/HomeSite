@@ -5,10 +5,11 @@
         echo $data;
     }
 
-    header('Access-Control-Allow-Origin: http://localhost', false);
+    header('Access-Control-Allow-Origin: http://localhost');
+    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    header('Access-Control-Allow-Headers: *');
     $data;
 
-    //Garbage data for dev purposes
     $TEMP_DATA = array(     array(  'id' => 1,
                                     'title' => 'Task',
                                     'category' => 'Cleaning',
@@ -52,12 +53,17 @@
                 http_response_code(404);
                 echo("Error Not Found");
                 die();
-        } 
+        }
+        
+        sendResponse($data);
     } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        switch(array_shift($elements)){             
-
-            case 'add':                                                           
-                
+        switch($url_components['path']){             
+            case '/add':                                                   
+                $data =  array(     'id' => 69,
+                                    'title' => 'Task-69',
+                                    'category' => 'Cleaning',
+                                    'complete' => false);
+                array_push($TEMP_DATA, $data);
                 break;
 
             case 'delete':
@@ -70,12 +76,14 @@
                 die();
         } 
 
+    } else if($_SERVER['REQUEST_METHOD'] == 'OPTIONS'){
+        http_response_code(200);
     } else {
         http_response_code(404);
         echo("Error Not Found");
         die();
     }
     
-    sendResponse($data);
+    
 
 ?>
