@@ -43,3 +43,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#MySQL Files
+/backend/mysql/*
+!/backend/mysql/homesite/
+!/backend/mysql/*/homesite/*
+!/backend/mysql/*/homesite/*/*
