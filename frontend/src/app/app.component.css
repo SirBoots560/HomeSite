@@ -4,16 +4,25 @@
   }
   nav {
     width: 68px;
-    background-color: #53ace4;
+    background-color: #3720C9;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
-  nav .icon {
-    width: 48px;
-    height: 48px;
-    margin: 10px;
+  nav i{
+    font-size: 45px;
+    margin-bottom: 20px;
+    color: #FFF;
+  }
+  nav i:hover{
+    opacity: 70%;
+  }
+  nav:first-child {
+    margin-top: 20px;
   }
   section {
     width: 100%;
-    background-color: #32435b;
+    background-color: #10093C;
   }
   section > header {
     color: #ffffff;

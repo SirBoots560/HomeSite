@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { TaskItemService } from '../task-item.service';
 import { lookupListToken } from '../providers';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'hs-task-item-form',
@@ -14,7 +15,8 @@ export class TaskItemFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, 
               private taskItemService: TaskItemService,
-              @Inject(lookupListToken) public lookupLists: any) { 
+              @Inject(lookupListToken) public lookupLists: any,
+              private router: Router) { 
     this.form = this.formBuilder.group({
       title: this.formBuilder.control('', Validators.compose([
         Validators.required,
@@ -28,7 +30,9 @@ export class TaskItemFormComponent implements OnInit {
   ngOnInit(){}
 
   onSubmit(taskItem: any){
-    this.taskItemService.add(taskItem).subscribe();
+    this.taskItemService.add(taskItem).subscribe(() => {
+      this.router.navigate(['/', taskItem.category]);
+    });
   }
 
 
