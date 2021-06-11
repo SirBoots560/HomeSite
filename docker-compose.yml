@@ -27,7 +27,7 @@ services:
             SERVICE_TAGS: dev
             SERVICE_NAME: mysql
         volumes:
-            - ./backend/mysql:/var/lib/mysql
+            - ./backend/mysql/:/var/lib/mysql/homesite
 
     angular:
         build: ./frontend/
