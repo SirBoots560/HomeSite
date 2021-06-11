@@ -1,6 +1,6 @@
 version: '3'
 services:
-    web_host:
+    nginx:
         build: ./backend/nginx/
         container_name: nginx-container
         ports:
@@ -16,9 +16,22 @@ services:
         volumes:
             - ./backend/www/html:/usr/share/nginx/html/
 
-    front_end:
+    mysql:
+        image: mysql:5.7.22
+        container_name: db-container
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: db
+            MYSQL_ROOT_PASSWORD: your_mysql_root_password
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - ./backend/mysql:/var/lib/mysql
+
+    angular:
         build: ./frontend/
-        container_name: front_end
+        container_name: angular-container
         ports:
             - '80:80'
       
