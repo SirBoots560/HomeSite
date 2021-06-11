@@ -15,10 +15,13 @@ export class TaskItemService implements OnInit{
     
   }
 
-  get(): Observable<TaskItemsResponse> {
+  get(category:any): Observable<TaskItemsResponse> {
     const url = 'http://localhost:90/get';
-
-    return this.http.get<TaskItemsResponse>(url);
+    const getOptions = {
+      params: { category }
+    };
+    console.log(this.http.get<TaskItemsResponse>(url));
+    return this.http.get<TaskItemsResponse>(url, getOptions);
     
   }
     

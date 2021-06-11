@@ -8,7 +8,7 @@ import {TaskItemService } from '../task-item.service';
 })
 export class TaskItemListComponent implements OnInit {
   taskItems: any;
-  category = '';
+  category = 'All';
 
   constructor(private taskItemService: TaskItemService) { }
 
@@ -24,7 +24,7 @@ export class TaskItemListComponent implements OnInit {
   
   getTaskItems(category: string){
     this.category = category;
-    this.taskItemService.get().subscribe(tasks => {
+    this.taskItemService.get(category).subscribe(tasks => {
       this.taskItems = tasks;
     });
   }
