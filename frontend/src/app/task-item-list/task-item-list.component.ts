@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskItemService } from '../task-item.service';
+import {TaskItem, TaskItemService } from '../task-item.service';
 
 @Component({
   selector: 'hs-task-item-list',
@@ -16,10 +16,11 @@ export class TaskItemListComponent implements OnInit {
     this.getTaskItems(this.category);
   }
 
-  
-
   onTaskItemDelete(taskItem: any) { 
-    this.taskItemService.delete(taskItem);
+    const id = taskItem.id;
+    this.taskItemService.delete(id).subscribe(() => {
+      this.getTaskItems(this.category);
+    });
   }
   
   getTaskItems(category: string){

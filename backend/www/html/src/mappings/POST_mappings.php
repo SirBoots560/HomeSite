@@ -15,8 +15,12 @@ switch($url_components['path']){
         $result = $conn->query($SQL);
         break;
 
-    case 'delete':
+    case '/delete':
+        $id = json_decode(file_get_contents('php://input'), true);
 
+        $SQL = "DELETE FROM tasks WHERE `id`='$id'";
+
+        $result = $conn->query($SQL);
         break;
                 
     default:                                

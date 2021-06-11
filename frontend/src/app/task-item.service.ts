@@ -27,15 +27,13 @@ export class TaskItemService implements OnInit{
   add(taskItem: any){
     const url = this.url + '/add';
     const param = JSON.stringify(taskItem);
-    console.log("SENT!");
     return this.http.post(url, param);
   }
 
-  delete(taskItem: any){
-    const index = this.taskItems.indexOf(taskItem);
-    if (index >= 0) {
-      this.taskItems.splice(index, 1);
-    }
+  delete(id: any){
+    const param = JSON.stringify(id);
+    const url = this.url + `/delete`
+    return this.http.post(url, id);
   }
 }
 
