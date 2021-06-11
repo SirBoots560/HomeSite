@@ -1,13 +1,9 @@
 <nav>
-  <a (click)="getTaskItems('All')">
-      all
-  </a>
-  <a (click)="getTaskItems('Cleaning')">
-    cleaning
-  </a>
-  <a (click)="getTaskItems('Cats')">
-    cats
-  </a>
+
+  <select name="category" id="category" formControlName="category" #cat (change)="getTaskItems(cat.value)">
+    <option *ngFor='let category of lookupLists.categories_show' value="{{ category }}">{{ category }}</option>
+  </select>
+
 </nav>
 <header>
     <div *ngIf="taskItems">{{ taskItems | categoryList }}</div>

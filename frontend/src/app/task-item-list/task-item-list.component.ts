@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {TaskItem, TaskItemService } from '../task-item.service';
+import { lookupListToken } from '../providers';
 
 @Component({
   selector: 'hs-task-item-list',
@@ -10,7 +11,8 @@ export class TaskItemListComponent implements OnInit {
   taskItems: any;
   category = 'All';
 
-  constructor(private taskItemService: TaskItemService) { }
+  constructor(private taskItemService: TaskItemService,
+              @Inject(lookupListToken) public lookupLists: any) { }
 
   ngOnInit(): void {
     this.getTaskItems(this.category);
