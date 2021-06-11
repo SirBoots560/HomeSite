@@ -8,7 +8,7 @@ services:
         links:
             - php
         volumes:
-            - ./backend/www/html:/usr/share/nginx/html/
+            - ./backend/www/html/:/usr/share/nginx/html/
     
     php:
         image: php:7.0-fpm
