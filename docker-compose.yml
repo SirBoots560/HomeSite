@@ -22,8 +22,8 @@ services:
         ports:
             - "3306:3306"
         environment:
-            MYSQL_DATABASE: db
-            MYSQL_ROOT_PASSWORD: your_mysql_root_password
+            MYSQL_DATABASE: homesite
+            MYSQL_ROOT_PASSWORD: mrVEp2zTD6
             SERVICE_TAGS: dev
             SERVICE_NAME: mysql
         volumes:
