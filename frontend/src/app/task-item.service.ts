@@ -23,12 +23,12 @@ export class TaskItemService implements OnInit{
     };
     return this.http.get<TaskItemsResponse>(url, getOptions);
   }
-    
 
   add(taskItem: any){
     const url = this.url + '/add';
+    const param = JSON.stringify(taskItem);
     console.log("SENT!");
-    return this.http.post(url, taskItem);
+    return this.http.post(url, param);
   }
 
   delete(taskItem: any){

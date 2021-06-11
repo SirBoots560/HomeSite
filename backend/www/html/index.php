@@ -13,7 +13,7 @@
     
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
-        require_once 'src/mappings/GET_mappings.php';
+        require 'src/mappings/GET_mappings.php';
 
     } else if($_SERVER['REQUEST_METHOD'] == 'POST'){
         

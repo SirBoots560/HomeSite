@@ -1,11 +1,11 @@
 <?php
 
-    $SQL = "SELECT * FROM 'tasks'";
-    $result = mysqli_query($conn, "SELECT * FROM tasks");
+    $result = $conn -> query("SELECT * FROM tasks");
     $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     switch($url_components['path']){             
         case '/get':
+
             if($params['category'] == 'All' || $params == null){
                 $data = json_encode($result); 
             } else {

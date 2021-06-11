@@ -21,6 +21,7 @@ export class TaskItemFormComponent implements OnInit {
         Validators.pattern('[\\w\\-\\s\\/]+')
       ])),
       category: this.formBuilder.control('', Validators.required),
+      complete: this.formBuilder.control('0', Validators.required),
     });
   }
 
