@@ -1,3 +1,3 @@
-FROM nginx:latest AS builder
+FROM nginx:latest
 
 COPY default.conf /etc/nginx/conf.d/default.conf

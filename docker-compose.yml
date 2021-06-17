@@ -17,7 +17,7 @@ services:
             - ./backend/www/html:/usr/share/nginx/html/
 
     mysql:
-        image: mysql:latest
+        build: ./backend/mysql/
         container_name: db-container
         ports:
             - "3306:3306"
