@@ -9,6 +9,7 @@ export class TaskItemComponent implements OnInit {
 
   @Input() taskItem: any;
   @Output() delete = new EventEmitter();
+  @Output() complete = new EventEmitter();
 
   constructor() { }
 
@@ -21,6 +22,10 @@ export class TaskItemComponent implements OnInit {
 
   onDelete(){
     this.delete.emit(this.taskItem);
+  }
+
+  onComplete(){
+    this.complete.emit(this.taskItem);
   }
 
 }

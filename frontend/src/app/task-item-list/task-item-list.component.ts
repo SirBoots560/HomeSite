@@ -24,6 +24,10 @@ export class TaskItemListComponent implements OnInit {
       this.getTaskItems(this.category);
     });
   }
+
+  onTaskItemComplete(taskItem: any){
+    console.log("Test");
+  }
   
   getTaskItems(category: string){
     this.category = category;
