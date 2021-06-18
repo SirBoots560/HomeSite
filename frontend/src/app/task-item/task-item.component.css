@@ -13,17 +13,17 @@
     font-size: 1.6em;
     flex: 1;
   }
-  :host(.medium-movies) {
-    border-color: #53ace4;
+  :host(.category-cats) {
+    border-color: #20c937;
   }
-  :host(.medium-movies) > h2 {
-    color: #53ace4;
+  :host(.category-cats) > h2 {
+    color: #20c937;
   }
-  :host(.medium-series) {
-    border-color: #45bf94;
+  :host(.category-clean) {
+    border-color: #c93720;
   }
-  :host(.medium-series) > h2 {
-    color: #45bf94;
+  :host(.category-clean) > h2 {
+    color: #c93720;
   }
   .tools {
     margin-top: 8px;
@@ -33,16 +33,16 @@
   }
   .delete {
     display: block;
-    background-color: #ec4342;
+    background-color: #c93720;
     padding: 4px;
     font-size: .8em;
     border-radius: 4px;
     color: #ffffff;
     cursor: pointer;
   }
-  .details {
+  .complete {
     display: block;
-    background-color: #37ad79;
+    background-color: #20c937;
     padding: 4px;
     font-size: .8em;
     border-radius: 4px;

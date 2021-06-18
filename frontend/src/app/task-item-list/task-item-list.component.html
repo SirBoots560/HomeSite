@@ -10,7 +10,7 @@
 </header>
 <section>
     <hs-task-item
-        [ngClass]="{'medium-movies': taskItem.category==='Cats', 'medium-series': taskItem.category==='Cleaning'}"
+        [ngClass]="{'category-cats': taskItem.category==='Cats', 'category-clean': taskItem.category==='Cleaning'}"
         *ngFor="let taskItem of taskItems" 
         [taskItem]="taskItem"
         (delete)="onTaskItemDelete($event)"></hs-task-item>
