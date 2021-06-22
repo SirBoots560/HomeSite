@@ -19,14 +19,15 @@ export class TaskItemListComponent implements OnInit {
   }
 
   onTaskItemDelete(taskItem: any) { 
-    const id = taskItem.id;
-    this.taskItemService.delete(id).subscribe(() => {
+    this.taskItemService.delete(taskItem).subscribe(() => {
       this.getTaskItems(this.category);
     });
   }
 
   onTaskItemComplete(taskItem: any){
-    console.log("Test");
+    this.taskItemService.complete(taskItem).subscribe(() => {
+      this.getTaskItems(this.category);
+    });
   }
   
   getTaskItems(category: string){

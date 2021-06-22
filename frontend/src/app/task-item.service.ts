@@ -31,10 +31,14 @@ export class TaskItemService implements OnInit{
     return this.http.post(url, param).pipe( catchError(this.handleError) );
   }
 
-  delete(id: any){
-    const param = JSON.stringify(id);
+  complete(taskItem: any){
+    const url = this.url + `/complete`
+    return this.http.post(url, taskItem.id).pipe( catchError(this.handleError) );
+  }
+
+  delete(taskItem: any){
     const url = this.url + `/delete`
-    return this.http.post(url, id).pipe( catchError(this.handleError) );
+    return this.http.post(url, taskItem.id).pipe( catchError(this.handleError) );
   }
 
   private handleError(error: HttpErrorResponse) {
