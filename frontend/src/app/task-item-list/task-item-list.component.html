@@ -1,11 +1,8 @@
-<nav>
-
+<header>
   <select name="category" id="category" #cat (change)="getTaskItems(cat.value)">
     <option *ngFor='let category of lookupLists.categories_show' value="{{ category }}">{{ category }}</option>
   </select>
 
-</nav>
-<header>
     <div *ngIf="taskItems">{{ taskItems | categoryList }}</div>
 </header>
 <section>
