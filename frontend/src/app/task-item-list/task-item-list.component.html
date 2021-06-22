@@ -6,10 +6,12 @@
     <div *ngIf="taskItems">{{ taskItems | categoryList }}</div>
 </header>
 <section>
+  <div *ngFor="let taskItem of taskItems">
     <hs-task-item
-        [ngClass]="{'category-cats': taskItem.category==='Cats', 'category-clean': taskItem.category==='Cleaning'}"
-        *ngFor="let taskItem of taskItems" 
-        [taskItem]="taskItem"
-        (delete)="onTaskItemDelete($event)"
-        (complete)="onTaskItemComplete($event)"></hs-task-item>
-  </section>
+      *ngIf="taskItem.complete == 0"
+      [ngClass]="{'category-cats': taskItem.category==='Cats', 'category-clean': taskItem.category==='Cleaning'}"
+      [taskItem]="taskItem"
+      (delete)="onTaskItemDelete($event)"
+      (complete)="onTaskItemComplete($event)"></hs-task-item>
+  </div>
+</section>
