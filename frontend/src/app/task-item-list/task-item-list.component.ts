@@ -9,8 +9,6 @@ import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
   styleUrls: ['./task-item-list.component.css']
 })
 export class TaskItemListComponent implements OnInit {
-  
-  @ViewChild('com') com: any;
 
   taskItems: any;
   category = 'All';

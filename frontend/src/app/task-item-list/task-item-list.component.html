@@ -4,8 +4,9 @@
   </select>
 
   <input type="checkbox" id="complete" #com (change)="getComVal($event)" />
+  <label for="complete"> Show Complete Tasks?</label>
 
-    <div *ngIf="taskItems">{{ taskItems | categoryList }}</div>
+  <div *ngIf="taskItems">{{ taskItems | categoryList }}</div>
 </header>
 <section>
     <hs-task-item

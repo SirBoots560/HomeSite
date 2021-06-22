@@ -9,6 +9,14 @@
     margin: 10px auto;
   }
 
+  header input {
+    margin-left: 15px;
+  }
+
+  header label {
+    color: #FFF;
+  }
+
   header {
     color: #c6c5c3;
     padding-bottom: 10px;
