@@ -1,6 +1,14 @@
 <?php
+    $where = " ";
+    //var_dump($params['complete']);
+    if(strcmp($params['complete'], 'true') == 0){
+        $where = " WHERE 1";
+    } else {
+        $where = " WHERE `complete` = 0";
+    }
 
-    $result = $conn -> query("SELECT * FROM tasks");
+    $result = $conn -> query("SELECT * FROM tasks".$where);
+    //var_dump("SELECT * FROM tasks".$where);
     $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     switch($url_components['path']){             
