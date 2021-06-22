@@ -1,6 +1,6 @@
 <nav>
 
-  <select name="category" id="category" formControlName="category" #cat (change)="getTaskItems(cat.value)">
+  <select name="category" id="category" #cat (change)="getTaskItems(cat.value)">
     <option *ngFor='let category of lookupLists.categories_show' value="{{ category }}">{{ category }}</option>
   </select>
 
