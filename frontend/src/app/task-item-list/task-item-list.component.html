@@ -1,17 +1,17 @@
 <header>
-  <select name="category" id="category" #cat (change)="getTaskItems(cat.value)">
+  <select name="category" id="category" #cat (change)="getTaskItems(cat.value, false)">
     <option *ngFor='let category of lookupLists.categories_show' value="{{ category }}">{{ category }}</option>
   </select>
+
+  <input type="checkbox" id="complete" #com (change)="getComVal($event)" />
 
     <div *ngIf="taskItems">{{ taskItems | categoryList }}</div>
 </header>
 <section>
-  <div *ngFor="let taskItem of taskItems">
     <hs-task-item
-      *ngIf="taskItem.complete == 0"
+      *ngFor="let taskItem of taskItems"
       [ngClass]="{'category-cats': taskItem.category==='Cats', 'category-clean': taskItem.category==='Cleaning'}"
       [taskItem]="taskItem"
       (delete)="onTaskItemDelete($event)"
       (complete)="onTaskItemComplete($event)"></hs-task-item>
-  </div>
 </section>

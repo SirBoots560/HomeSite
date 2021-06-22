@@ -17,10 +17,10 @@ export class TaskItemService implements OnInit{
     
   }
 
-  get(category:any): Observable<TaskItemsResponse> {
+  get(category:any, complete: boolean): Observable<TaskItemsResponse> {
     const url = this.url + '/get';
     const getOptions = {
-      params: { category }
+      params: { category, complete }
     };
     return this.http.get<TaskItemsResponse>(url, getOptions).pipe( catchError(this.handleError) );
   }
