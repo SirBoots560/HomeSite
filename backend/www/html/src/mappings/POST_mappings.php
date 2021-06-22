@@ -22,6 +22,14 @@ switch($url_components['path']){
 
         $result = $conn->query($SQL);
         break;
+
+    case '/complete':
+        $id = json_decode(file_get_contents('php://input'), true);
+    
+        $SQL = "UPDATE tasks SET `complete` = 1 WHERE `id`='$id'";
+    
+        $result = $conn->query($SQL);
+        break;
                 
     default:                                
         http_response_code(404);
