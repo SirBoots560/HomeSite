@@ -1,24 +1,41 @@
 :host {
-    display: block;
-    padding: 10px;
-  }
-  ul {
-    list-style-type: none;
-  }
-  ul li {
-    margin: 10px 0;
-  }
-  label {
-    color: #3720C9;
-  }
-  header > h1 {
-    font-size: 2em;
-  }
-  header {
-    color: #ebe8f9;
-  }
+  height: calc(100% - 95px);
+  padding: 10px;
+  display: block;
+}
+
+header {
+  color: #FFF;
+  padding: 10px;
+}
+
+header > h1 {
+  font-size: 2em;
+}
+
+header .description {
+  font-style: italic;
+}
+
+form {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  margin: 10px 0;
+}
+
+label {
+  color: #3720C9;
+}
+  
   input, select {
-    background-color: #ebe8f9;
+    background-color: #FFF;
     color: #000;
     border-radius: 3px;
     border: none;

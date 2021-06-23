@@ -16,10 +16,6 @@ export class TaskItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  wasComplete(){
-    return this.taskItem.complete;
-  }
-
   onDelete(){
     this.delete.emit(this.taskItem);
   }

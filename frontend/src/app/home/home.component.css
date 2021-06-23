@@ -1,11 +1,24 @@
-h1 {
-    font-size: 2em;
-}
-
-h2 {
-    font-size: 1.4em;
-}
-
-h1, h2{
+:host {
+    display: flex;
+    height: calc(100% - 95px);
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  header {
     color: #FFF;
-}
+    padding: 10px;
+  }
+  
+  header > h1 {
+    font-size: 2em;
+  }
+  
+  header .description {
+    font-style: italic;
+  }
+  
+  div {
+    padding-top: 10px;
+    padding-left: 10px;
+  }
