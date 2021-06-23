@@ -11,7 +11,8 @@ import { lookupListToken, lookupLists } from './providers';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
-import { LinksComponent } from './links/links.component';
+import { LinkComponent } from './link/link.component';
+import { LinkListComponent } from './link-list/link-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LinksComponent } from './links/links.component';
     CategoryListPipe,
     HomeComponent,
     NavComponent,
-    LinksComponent
+    LinkComponent,
+    LinkListComponent
   ],
   imports: [
     BrowserModule,
