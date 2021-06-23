@@ -10,6 +10,8 @@ import { CategoryListPipe } from './category-list.pipe';
 import { lookupListToken, lookupLists } from './providers';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
+import { LinksComponent } from './links/links.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HomeComponent } from './home/home.component';
     TaskItemListComponent,
     TaskItemFormComponent,
     CategoryListPipe,
-    HomeComponent
+    HomeComponent,
+    NavComponent,
+    LinksComponent
   ],
   imports: [
     BrowserModule,
