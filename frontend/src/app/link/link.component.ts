@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LinkComponent implements OnInit {
 
-  @Input() purple: any;
+  @Input() link: any;
 
   constructor() { }
 

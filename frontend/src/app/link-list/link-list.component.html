@@ -4,7 +4,8 @@
 </header>
 
 <div>
-    <app-link  *ngFor="let purple of links"></app-link>
+    <app-link   *ngFor="let link of links"
+                [link]="link"></app-link>
 </div>
 
 

@@ -19,12 +19,6 @@ export class LinkListComponent implements OnInit {
       title: "Router",
       location: "http://router.admin",
       sameWindow: 0
-    },
-    {
-      id: 3,
-      title: "Router",
-      location: "http://router.admin",
-      sameWindow: 0
     }
   ];
 
