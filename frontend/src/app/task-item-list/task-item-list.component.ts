@@ -46,10 +46,4 @@ export class TaskItemListComponent implements OnInit {
     this.isChecked = !this.isChecked;
     this.getTaskItems(category);
   }
-
-  // getIsChecked(){
-  //   // console.log(event.explicitOriginalTarget.checked);
-  //   // this.getTaskItems(this.category, event.explicitOriginalTarget.checked);
-  //   return this.isChecked.explicitOriginalTarget.checked;
-  // }
 }
