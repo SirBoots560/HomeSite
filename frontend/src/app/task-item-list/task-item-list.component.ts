@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { TaskItemService } from '../task-item.service';
 import { lookupListToken } from '../providers';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
@@ -12,6 +12,7 @@ export class TaskItemListComponent implements OnInit {
 
   taskItems: any;
   category = 'All';
+  isChecked = false;
 
   constructor(private formBuilder: FormBuilder, 
               private taskItemService: TaskItemService,
@@ -19,30 +20,36 @@ export class TaskItemListComponent implements OnInit {
                }
 
   ngOnInit(): void {
-    this.getTaskItems(this.category, false);
+    this.getTaskItems(this.category);
   }
 
   onTaskItemDelete(taskItem: any) { 
     this.taskItemService.delete(taskItem).subscribe(() => {
-      this.getTaskItems(this.category, false);
+      this.getTaskItems(this.category);
     });
   }
 
   onTaskItemComplete(taskItem: any){
     this.taskItemService.complete(taskItem).subscribe(() => {
-      this.getTaskItems(this.category, false);
+      this.getTaskItems(this.category);
     });
   }
   
-  getTaskItems(category: string, complete: boolean){
+  getTaskItems(category: string){
     this.category = category;
-    this.taskItemService.get(category, complete).subscribe(tasks => {
+    this.taskItemService.get(category, this.isChecked).subscribe(tasks => {
       this.taskItems = tasks;
     });
   }
 
-  getComVal(event: any){
-    console.log(event.explicitOriginalTarget.checked);
-    this.getTaskItems(this.category, event.explicitOriginalTarget.checked);
+  toggleVal(category: string){
+    this.isChecked = !this.isChecked;
+    this.getTaskItems(category);
   }
+
+  // getIsChecked(){
+  //   // console.log(event.explicitOriginalTarget.checked);
+  //   // this.getTaskItems(this.category, event.explicitOriginalTarget.checked);
+  //   return this.isChecked.explicitOriginalTarget.checked;
+  // }
 }

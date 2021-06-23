@@ -2,11 +2,11 @@
     <h1>Task List</h1>
     <p class="description">List of tasks that need to be completed.</p>
   
-  <select name="category" id="category" #cat (change)="getTaskItems(cat.value, false)">
+  <select name="category" id="category" #cat (change)="getTaskItems(cat.value)">
     <option *ngFor='let category of lookupLists.categories_show' value="{{ category }}">{{ category }}</option>
   </select>
 
-  <input type="checkbox" id="complete" #com (change)="getComVal($event)" />
+  <input type="checkbox" id="complete" (change)="toggleVal(cat.value)"/>
   <label for="complete"> Show Complete Tasks?</label>
 
   <div *ngIf="taskItems">{{ taskItems | categoryList }}</div>
