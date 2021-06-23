@@ -8,8 +8,14 @@
   ul li {
     margin: 10px 0;
   }
-  header, label {
+  label {
     color: #3720C9;
+  }
+  header > h1 {
+    font-size: 2em;
+  }
+  header {
+    color: #ebe8f9;
   }
   input, select {
     background-color: #ebe8f9;
