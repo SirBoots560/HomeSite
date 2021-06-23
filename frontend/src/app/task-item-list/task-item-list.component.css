@@ -19,11 +19,20 @@
 
   header {
     color: #c6c5c3;
+    padding: 10px;
     padding-bottom: 10px;
+  }
+
+  header > h1 {
+    font-size: 2em;
   }
 
   header > h2 {
     font-size: 1.4em;
+  }
+
+  header .description {
+    font-style: italic;
   }
 
   section {

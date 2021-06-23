@@ -1,4 +1,7 @@
 <header>
+    <h1>Task List</h1>
+    <p class="description">List of tasks that need to be completed.</p>
+  
   <select name="category" id="category" #cat (change)="getTaskItems(cat.value, false)">
     <option *ngFor='let category of lookupLists.categories_show' value="{{ category }}">{{ category }}</option>
   </select>
