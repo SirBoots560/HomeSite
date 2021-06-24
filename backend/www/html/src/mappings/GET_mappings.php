@@ -12,6 +12,16 @@
     
             break;
         
+        case '/files':
+            $category = "'".$params['category']."'";
+
+            $result = $conn -> query("SELECT * FROM files WHERE category = ".$category);
+            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    
+            $data = json_encode($result);                                                 
+        
+            break;
+        
         case '/tasks':
 
             if(strcmp($params['complete'], 'true') == 0){
