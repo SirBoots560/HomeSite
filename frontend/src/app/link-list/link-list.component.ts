@@ -10,7 +10,7 @@ export class LinkListComponent implements OnInit {
 
   links: any;
 
-  constructor(  private linkService: LinkService ) { }
+  constructor( private linkService: LinkService ) { }
 
   ngOnInit(): void {
     this.getLinks();

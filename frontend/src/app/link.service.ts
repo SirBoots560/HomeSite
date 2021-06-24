@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class LinkService {
 
-  taskItems:any = [];
+  links:any = [];
   url = 'http://localhost:90';
 
   constructor( private http: HttpClient ) { }
