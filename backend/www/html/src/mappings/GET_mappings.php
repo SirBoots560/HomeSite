@@ -13,6 +13,7 @@
             break;
         
         case '/files':
+            
             $category = "'".$params['category']."'";
 
             $result = $conn -> query("SELECT * FROM files WHERE category = ".$category);
