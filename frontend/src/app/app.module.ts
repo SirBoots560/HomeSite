@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { LinkComponent } from './link/link.component';
 import { LinkListComponent } from './link-list/link-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { LinkListComponent } from './link-list/link-list.component';
     HomeComponent,
     NavComponent,
     LinkComponent,
-    LinkListComponent
+    LinkListComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [{
     provide: lookupListToken, useValue: lookupLists
