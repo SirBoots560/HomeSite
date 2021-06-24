@@ -1,18 +1,28 @@
 <?php
     $where = " ";
-    //var_dump($params['complete']);
-    if(strcmp($params['complete'], 'true') == 0){
-        $where = " WHERE 1";
-    } else {
-        $where = " WHERE `complete` = 0";
-    }
-
-    $result = $conn -> query("SELECT * FROM tasks".$where);
-    //var_dump("SELECT * FROM tasks".$where);
-    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     switch($url_components['path']){             
-        case '/get':
+        case '/links':
+
+            $result = $conn -> query("SELECT * FROM links");
+        
+            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+            $data = json_encode($result);                                                 
+    
+            break;
+        
+        case '/tasks':
+
+            if(strcmp($params['complete'], 'true') == 0){
+                $where = " WHERE 1";
+            } else {
+                $where = " WHERE `complete` = 0";
+            }
+        
+            $result = $conn -> query("SELECT * FROM tasks".$where);
+        
+            $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
             if($params['category'] == 'All' || $params == null){
                 $data = json_encode($result); 
@@ -26,6 +36,7 @@
             }                                                 
 
             break;
+        
         default:
             var_dump($url_components['path']);                           
             http_response_code(404);

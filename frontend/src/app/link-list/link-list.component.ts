@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LinkService } from '../link.service';
 
 @Component({
   selector: 'app-link-list',
@@ -7,24 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkListComponent implements OnInit {
 
-  links = [
-    {
-      id: 1,
-      title: "PiHole",
-      location: "http://pihole.admin",
-      sameWindow: 0
-    },
-    {
-      id: 2,
-      title: "Router",
-      location: "http://router.admin",
-      sameWindow: 0
-    }
-  ];
+  links: any;
 
-  constructor() { }
+  constructor(  private linkService: LinkService ) { }
 
   ngOnInit(): void {
+    this.getLinks();
+  }
+
+  getLinks(){
+    this.linkService.get().subscribe(links => {
+      this.links = links;
+    });
   }
 
 }
