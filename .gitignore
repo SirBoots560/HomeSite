@@ -39,6 +39,10 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+backend/www/html/vendor/
+backend/www/html/logs/*
+!backend/www/html/logs/README.md
+.phpunit.result.cache
 
 # System Files
 .DS_Store
