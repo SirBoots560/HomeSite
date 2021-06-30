@@ -9,8 +9,6 @@ use App\Domain\Task\AddTaskException;
 use App\Domain\Task\TaskRepository;
 use App\Infrastructure\Persistence\DBConfig;
 
-use function DI\value;
-
 class MySQLTaskRepository extends TaskRepository
 {
     /**
@@ -103,6 +101,29 @@ class MySQLTaskRepository extends TaskRepository
         //If insertion fails, throw AddTaskException
         if(!$response){
             throw new AddTaskException();
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteTask(int $id): void
+    {
+        //Sanitizing input
+        $id = $this->sanitizeInt( (int) $id);
+
+        //Preparing MySQL statement
+        $statement = "DELETE FROM tasks WHERE `id` = $id";
+
+        //Sanitizing MySQL statement
+        $statement = DBConfig::sanitize($statement);
+
+        //Inserting into DB
+        $response = DBConfig::query($statement);
+
+        //If insertion fails, throw AddTaskException
+        if(!$response){
+            throw new TaskNotFoundException();
         }
     }
 }

@@ -10,6 +10,7 @@ abstract class TaskRepository extends Repository
     /**
      * @param int $id
      * @return Task
+     * @throws TaskNotFoundException
      */
     abstract public function findTaskOfId(int $id): Task;
 
@@ -25,5 +26,12 @@ abstract class TaskRepository extends Repository
      * @throws AddTaskException
      */
     abstract public function addTask(array $data): void;
+
+    /** 
+     * @param array $data
+     * @return void
+     * @throws TaskNotFoundException
+     */
+    abstract public function deleteTask(int $id): void;
 
 }

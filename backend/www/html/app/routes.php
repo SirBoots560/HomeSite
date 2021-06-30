@@ -5,6 +5,7 @@ use App\Application\Actions\Task\AddTaskAction;
 use App\Application\Actions\Task\ListTasksAction;
 use App\Application\Actions\Task\ViewTaskAction;
 use App\Application\Actions\Task\ListTasksCategoryAction;
+use App\Application\Actions\Task\DeleteTaskAction;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
@@ -39,6 +40,9 @@ return function (App $app) {
 
         //Route for adding a new task
         $group->post('/add', AddTaskAction::class);
+
+        //Route for deleting a task
+        $group->delete('/{id:[0-9]+}', DeleteTaskAction::class);
         
     });
 };
