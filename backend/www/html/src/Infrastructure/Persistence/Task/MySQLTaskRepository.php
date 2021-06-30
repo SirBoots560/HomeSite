@@ -14,7 +14,7 @@ class MySQLTaskRepository extends TaskRepository
     /**
      * @var Task[]
      */
-    private $tasks;
+    private $tasks = [];
 
     /**
      * MySQLTaskRepository constructor.
@@ -39,7 +39,7 @@ class MySQLTaskRepository extends TaskRepository
             $task = new Task($id, $title, $category, $complete);
 
             //Adding new task to tasks array
-            $this->tasks[$id] = $task;
+            array_push($this->tasks, $task);
         }
     }
 
@@ -54,27 +54,34 @@ class MySQLTaskRepository extends TaskRepository
     /**
      * {@inheritdoc}
      */
-    public function findTaskOfId(int $id): Task
+    public function findTasksOfCategory(string $category, string $complete): array
     {
-       if(!isset($this->tasks[$id])){
-           throw new TaskNotFoundException();
-       }
-       
-       return $this->tasks[$id];
-    }
+        $filteredTasks = [];
 
-    /**
-     * {@inheritdoc}
-     */
-    public function findTasksOfCategory(string $category): array
-    {
-       $filteredTasks = [];
+        $category = strtolower($category);
 
-       foreach($this->tasks as $task){
-            if(strcmp($task->getCategory(), $category) == 0){
-                array_push($filteredTasks, $task); 
+        if(strcmp('all', $category) == 0){
+            $filteredTasks = $this->tasks;
+        } else {
+            foreach($this->tasks as $task){
+                if(strcmp(strtolower($task->getCategory()), $category) == 0){
+                    array_push($filteredTasks, $task); 
+                }
             }
-       }
+        }
+
+        if(strcmp($complete, 'true')){
+
+            $temp = $filteredTasks;
+
+            $filteredTasks = [];
+
+            foreach($temp as $val){
+                if($val->getComplete() == 0){
+                    array_push($filteredTasks, $val);
+                }
+            }
+        }
 
        return $filteredTasks;
     }	

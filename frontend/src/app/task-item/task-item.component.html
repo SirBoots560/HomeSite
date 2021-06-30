@@ -4,7 +4,7 @@
   <a class="delete" (click)="onDelete()">
     Remove
   </a>
-  <a class="complete" (click)="onComplete()">
+  <a class="complete" *ngIf="taskItem.complete == 0" (click)="onComplete()">
     Complete
   </a>
 </div>

@@ -8,17 +8,10 @@ use App\Domain\Repository;
 abstract class TaskRepository extends Repository
 {
     /**
-     * @param int $id
-     * @return Task
-     * @throws TaskNotFoundException
-     */
-    abstract public function findTaskOfId(int $id): Task;
-
-    /**
      * @param string $category
      * @return Task[]
      */
-    abstract public function findTasksOfCategory(string $category): array;
+    abstract public function findTasksOfCategory(string $category, string $complete): array;
 
     /** 
      * @param array $data

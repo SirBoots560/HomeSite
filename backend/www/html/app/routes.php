@@ -23,11 +23,8 @@ return function (App $app) {
         //Route for listing all tasks        
         $group->get('', ListTasksAction::class);
 
-        //Route for listing one task
-        $group->get('/{category:[a-zA-Z]+}', ListTasksCategoryAction::class);
-
-        //Route for listing one task
-        $group->get('/{id:[0-9]+}', ViewTaskAction::class);
+        //Route for listing task category
+        $group->get('/{category:[a-zA-Z]+}/{complete}', ListTasksCategoryAction::class);
 
         //Route for adding a new task
         $group->post('/add', AddTaskAction::class);

@@ -13,8 +13,9 @@ class ListTasksCategoryAction extends TaskAction
     protected function action(): Response
     {
         $category = $this->resolveArg('category');
+        $complete = $this->resolveArg('complete');
 
-        $tasks = $this->taskRepository->findTasksOfCategory($category);
+        $tasks = $this->taskRepository->findTasksOfCategory($category, $complete);
 
         $this->logger->info("Tasks of category `${category}` was viewed.");
         

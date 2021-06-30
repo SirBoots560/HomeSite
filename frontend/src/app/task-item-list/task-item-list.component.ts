@@ -38,7 +38,9 @@ export class TaskItemListComponent implements OnInit {
   getTaskItems(category: string){
     this.category = category;
     this.taskItemService.get(category, this.isChecked).subscribe(tasks => {
-      this.taskItems = tasks;
+      
+      this.taskItems = tasks.data;
+
     });
   }
 
