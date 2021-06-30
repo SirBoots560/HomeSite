@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use App\Application\Actions\Task\AddTaskAction;
 use App\Application\Actions\Task\ListTasksAction;
 use App\Application\Actions\Task\ViewTaskAction;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -19,8 +20,21 @@ return function (App $app) {
         return $response;
     });
 
+    $app->post('/', function (Request $request, Response $response) {
+        $response->getBody()->write('Hello world!');
+        return $response;
+    });
+
     $app->group('/tasks', function (Group $group) {
+
+        //Route for listing all tasks        
         $group->get('', ListTasksAction::class);
+
+        //Route for listing one task
         $group->get('/{id}', ViewTaskAction::class);
+
+        //Route for adding a new task
+        $group->post('/add', AddTaskAction::class);
+        
     });
 };

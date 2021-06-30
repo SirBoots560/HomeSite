@@ -16,4 +16,12 @@ interface TaskRepository
      * @throws TaskNotFoundException
      */
     public function findTaskOfId(int $id): Task;
+
+    /** 
+     * @param array $data
+     * @return void
+     * @throws AddTaskException
+     */
+    public function addTask(array $data): void;
+
 }
