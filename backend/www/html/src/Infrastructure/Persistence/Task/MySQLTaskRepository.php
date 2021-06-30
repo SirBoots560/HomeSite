@@ -8,7 +8,7 @@ use App\Domain\Task\TaskNotFoundException;
 use App\Domain\Task\AddTaskException;
 use App\Domain\Task\TaskRepository;
 
-class MySQLTaskRepository implements TaskRepository
+class MySQLTaskRepository extends TaskRepository
 {
     /**
      * @var Task[]
@@ -91,50 +91,5 @@ class MySQLTaskRepository implements TaskRepository
         if(!$response){
             throw new AddTaskException();
         }
-    }
-
-    /** 
-     * @param string $data
-     * @return string $data 
-     */
-    private function sanitizeString(string $data): string
-    {
-        //Remove space bfore and after
-        $data = trim($data); 
-
-        //Remove slashes
-        $data = stripslashes($data);
-
-        //Sanitize
-        $data=(filter_var($data, FILTER_SANITIZE_STRING));
-
-        return $data;
-    }
-
-    /** 
-     * @param string $data
-     * @return string $data 
-     */
-    private function sanitizeInt(int $data): int
-    {
-        //Sanitize
-        $data = (int) (filter_var( $data, FILTER_SANITIZE_NUMBER_INT));
-
-        return $data;
-    }
-    
-    /** 
-     * @param string $statement
-     * @return string $statement
-     */
-    private function sanitizeMySQL(string $statement): string
-    {
-        //Real escape string
-        $statement = $this->conn->real_escape_string($statement);
-
-        //Remove slashes
-        $statement = stripslashes($statement);
-
-        return $statement;
     }
 }
