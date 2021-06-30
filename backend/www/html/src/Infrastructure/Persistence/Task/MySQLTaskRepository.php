@@ -7,6 +7,7 @@ use App\Domain\Task\Task;
 use App\Domain\Task\TaskNotFoundException;
 use App\Domain\Task\AddTaskException;
 use App\Domain\Task\TaskRepository;
+use App\Infrastructure\Persistence\DBConfig;
 
 class MySQLTaskRepository extends TaskRepository
 {
@@ -16,20 +17,14 @@ class MySQLTaskRepository extends TaskRepository
     private $tasks;
 
     /**
-     * @var mysqli
-     */
-    private $conn;
-
-    /**
      * MySQLTaskRepository constructor.
      *
      * @param array|null $tasks
      */
     public function __construct(array $tasks = [])
     {
-        require_once "config.php";
-        $this->conn = $conn; 
-        $result = $this->conn->query("SELECT * FROM tasks");
+        DBConfig::connect();
+        $result = DBConfig::query("SELECT * FROM tasks");
         $this->tasks = [];
 
         while($row = $result->fetch_array(MYSQLI_ASSOC)){
@@ -82,10 +77,10 @@ class MySQLTaskRepository extends TaskRepository
         $statement = "INSERT INTO tasks VALUES(DEFAULT, '$title', '$category', $complete)";
 
         //Sanitizing MySQL statement
-        $statement = $this->sanitizeMySQL($statement);
+        $statement = DBConfig::sanitize($statement);
 
         //Inserting into DB
-        $response = $this->conn->query($statement);
+        $response = DBConfig::query($statement);
 
         //If insertion fails, throw AddTaskException
         if(!$response){

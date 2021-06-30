@@ -39,19 +39,4 @@ abstract class Repository
 
         return $data;
     }
-    
-    /** 
-     * @param string $statement
-     * @return string
-     */
-    protected function sanitizeMySQL(string $statement): string
-    {
-        //Real escape string
-        $statement = $this->conn->real_escape_string($statement);
-
-        //Remove slashes
-        $statement = stripslashes($statement);
-
-        return $statement;
-    }
 }
