@@ -15,11 +15,9 @@ class AddTaskAction extends TaskAction
 
         $data = $this->getFormData();
 
-        $id = $data['id'];
-
         $this->taskRepository->addTask($data);
 
-        $this->logger->info("Task of id `${id}` was added.");
+        $this->logger->info("A task was added.");
 
         return $this->respondWithData();
     }

@@ -34,4 +34,11 @@ abstract class TaskRepository extends Repository
      */
     abstract public function deleteTask(int $id): void;
 
+    /** 
+     * @param array $data
+     * @return void
+     * @throws TaskNotFoundException
+     */
+    abstract public function completeTask(int $id): void;
+
 }

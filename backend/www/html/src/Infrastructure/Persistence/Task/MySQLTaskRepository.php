@@ -126,4 +126,27 @@ class MySQLTaskRepository extends TaskRepository
             throw new TaskNotFoundException();
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function completeTask(int $id): void
+    {
+        //Sanitizing input
+        $id = $this->sanitizeInt( (int) $id);
+
+        //Preparing MySQL statement
+        $statement = "UPDATE tasks SET `complete` = 1 WHERE `id` = $id";
+
+        //Sanitizing MySQL statement
+        $statement = DBConfig::sanitize($statement);
+
+        //Inserting into DB
+        $response = DBConfig::query($statement);
+
+        //If insertion fails, throw AddTaskException
+        if(!$response){
+            throw new TaskNotFoundException();
+        }
+    }
 }
