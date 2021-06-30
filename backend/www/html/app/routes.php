@@ -4,6 +4,7 @@ declare(strict_types=1);
 use App\Application\Actions\Task\AddTaskAction;
 use App\Application\Actions\Task\ListTasksAction;
 use App\Application\Actions\Task\ViewTaskAction;
+use App\Application\Actions\Task\ListTasksCategoryAction;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
@@ -31,7 +32,10 @@ return function (App $app) {
         $group->get('', ListTasksAction::class);
 
         //Route for listing one task
-        $group->get('/{id}', ViewTaskAction::class);
+        $group->get('/{category:[a-zA-Z]+}', ListTasksCategoryAction::class);
+
+        //Route for listing one task
+        $group->get('/{id:[0-9]+}', ViewTaskAction::class);
 
         //Route for adding a new task
         $group->post('/add', AddTaskAction::class);

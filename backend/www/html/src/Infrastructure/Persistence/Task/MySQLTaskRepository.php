@@ -9,6 +9,8 @@ use App\Domain\Task\AddTaskException;
 use App\Domain\Task\TaskRepository;
 use App\Infrastructure\Persistence\DBConfig;
 
+use function DI\value;
+
 class MySQLTaskRepository extends TaskRepository
 {
     /**
@@ -56,11 +58,27 @@ class MySQLTaskRepository extends TaskRepository
      */
     public function findTaskOfId(int $id): Task
     {
-        if (!isset($this->tasks[$id])) {
-            throw new TaskNotFoundException();
-        }
+       if(!isset($this->tasks[$id])){
+           throw new TaskNotFoundException();
+       }
+       
+       return $this->tasks[$id];
+    }
 
-        return $this->tasks[$id];
+    /**
+     * {@inheritdoc}
+     */
+    public function findTasksOfCategory(string $category): array
+    {
+       $filteredTasks = [];
+
+       foreach($this->tasks as $task){
+            if(strcmp($task->getCategory(), $category) == 0){
+                array_push($filteredTasks, $task); 
+            }
+       }
+
+       return $filteredTasks;
     }	
 
     /**
