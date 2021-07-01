@@ -9,16 +9,13 @@ import { catchError } from 'rxjs/operators';
 export class FilesService {
 
   files:any = [];
-  url = 'http://localhost:90';
+  url = 'http://localhost:90/files';
   
   constructor( private http: HttpClient ) { }
 
   get(category: any): Observable<FilesResponse> {
-    const url = this.url + '/files';
-    const getOptions = {
-      params: { category }
-    };
-    return this.http.get<FilesResponse>(url, getOptions).pipe( catchError(this.handleError) );
+    const url = this.url + '/' + category;
+    return this.http.get<FilesResponse>(url).pipe( catchError(this.handleError) );
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -28,7 +25,8 @@ export class FilesService {
 }
 
 export interface FilesResponse {
-  files: File[];
+  statusCode: number,
+  data: File[];
 }
 
 export interface File {

@@ -18,7 +18,7 @@ export class CarouselComponent implements OnInit {
 
   getimages(){
     this.filesService.get('Carousel').subscribe(images => {
-      this.images = images;
+      this.images = images.data;
     });
   }
 
