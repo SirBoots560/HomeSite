@@ -18,6 +18,12 @@ export class LinkService {
     return this.http.get<LinksResponse>(url).pipe( catchError(this.handleError) );
   }
 
+  add(link: any){
+    const url = this.url + '/add';
+    const param = JSON.stringify(link);
+    return this.http.post(url, param).pipe( catchError(this.handleError) );
+  }
+
   private handleError(error: HttpErrorResponse) {
     console.error(error.message);
     return throwError('A data error occurred, please try again.');

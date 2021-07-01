@@ -31,7 +31,7 @@ export class TaskItemFormComponent implements OnInit {
 
   onSubmit(taskItem: any){
     this.taskItemService.add(taskItem).subscribe(() => {
-      this.router.navigate(['/', taskItem.category]);
+      this.router.navigate(['/all']);
     });
   }
 

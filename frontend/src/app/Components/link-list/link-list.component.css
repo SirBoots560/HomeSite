@@ -18,6 +18,21 @@ header .description {
   font-style: italic;
 }
 
+header i {
+  color: #FFF;
+  margin-top:15px;
+
+}
+
+header a:hover {
+  opacity: 70%;
+}
+
+header span {
+  color: #FFF;
+  margin-left: 5px;
+}
+
 div {
   padding-top: 10px;
   padding-left: 10px;
