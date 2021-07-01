@@ -46,4 +46,23 @@ class FileRepository extends Repository
     {
         return array_values($this->files);
     }
+
+    /**
+     * @param string $category
+     * @return File[]
+     */
+    public function findFilesOfCategory(string $category): array
+    {
+        $filteredFiles = [];
+
+        $category = strtolower($category);
+
+        foreach($this->files as $file){
+            if(strcmp(strtolower($file->getCategory()), $category) == 0){
+                array_push($filteredFiles, $file); 
+            }
+        }
+
+       return $filteredFiles;
+    }
 }

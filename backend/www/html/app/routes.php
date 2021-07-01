@@ -10,6 +10,7 @@ use App\Application\Actions\Task\CompleteTaskAction;
 use App\Application\Actions\Link\ListLinksAction;
 
 use App\Application\Actions\File\ListFilesAction;
+use App\Application\Actions\File\ListFilesCategoryAction;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -64,6 +65,9 @@ return function (App $app) {
 
         //Route for listing all files        
         $group->get('', ListFilesAction::class);
+
+        //Route for listing files by category       
+        $group->get('/{category:[a-zA-Z]+}', ListFilesCategoryAction::class);
 
     });
 };
