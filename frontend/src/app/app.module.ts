@@ -3,18 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TaskItemComponent } from './task-item/task-item.component';
-import { TaskItemListComponent } from './task-item-list/task-item-list.component';
-import { TaskItemFormComponent } from './task-item-form/task-item-form.component';
-import { CategoryListPipe } from './category-list.pipe';
+import { TaskItemComponent } from './Components/task-item/task-item.component';
+import { TaskItemListComponent } from './Components/task-item-list/task-item-list.component';
+import { TaskItemFormComponent } from './Components/task-item-form/task-item-form.component';
+import { CategoryListPipe } from './Pipes/category/category-list.pipe';
 import { lookupListToken, lookupLists } from './providers';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
-import { NavComponent } from './nav/nav.component';
-import { LinkComponent } from './link/link.component';
-import { LinkListComponent } from './link-list/link-list.component';
+import { HomeComponent } from './Components/home/home.component';
+import { NavComponent } from './Components/nav/nav.component';
+import { LinkComponent } from './Components/link/link.component';
+import { LinkListComponent } from './Components/link-list/link-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselComponent } from './Components/carousel/carousel.component';
 
 @NgModule({
   declarations: [

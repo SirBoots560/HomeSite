@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { TaskItemService } from '../task-item.service';
-import { lookupListToken } from '../providers';
+import { TaskItemService } from '../../Services/task/task-item.service';
+import { lookupListToken } from '../../providers';
 
 @Component({
   selector: 'hs-task-item-list',

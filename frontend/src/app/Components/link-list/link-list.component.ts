@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LinkService } from '../link.service';
+import { LinkService } from '../../Services/link/link.service';
 
 @Component({
   selector: 'app-link-list',

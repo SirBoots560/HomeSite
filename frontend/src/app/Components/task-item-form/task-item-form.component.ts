@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { TaskItemService } from '../task-item.service';
-import { lookupListToken } from '../providers';
+import { TaskItemService } from '../../Services/task/task-item.service';
+import { lookupListToken } from '../../providers';
 import { Router } from '@angular/router';
 
 @Component({
