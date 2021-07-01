@@ -1,7 +1,6 @@
-import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { TaskItemService } from '../task-item.service';
 import { lookupListToken } from '../providers';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'hs-task-item-list',
@@ -14,8 +13,7 @@ export class TaskItemListComponent implements OnInit {
   category = 'All';
   isChecked = false;
 
-  constructor(private formBuilder: FormBuilder, 
-              private taskItemService: TaskItemService,
+  constructor( private taskItemService: TaskItemService,
               @Inject(lookupListToken) public lookupLists: any) {
                }
 

@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -9,12 +9,12 @@ import { catchError } from 'rxjs/operators';
 export class LinkService {
 
   links:any = [];
-  url = 'http://localhost:90';
+  url = 'http://localhost:90/links';
 
   constructor( private http: HttpClient ) { }
 
   get(): Observable<LinksResponse> {
-    const url = this.url + '/links';
+    const url = this.url + '';
     return this.http.get<LinksResponse>(url).pipe( catchError(this.handleError) );
   }
 
@@ -25,7 +25,8 @@ export class LinkService {
 }
 
 export interface LinksResponse {
-  links: Link[];
+  statusCode: number,
+  data: Link[];
 }
 
 export interface Link {
