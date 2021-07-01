@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 use App\Application\Actions\Task\AddTaskAction;
 use App\Application\Actions\Task\ListTasksAction;
-use App\Application\Actions\Task\ViewTaskAction;
 use App\Application\Actions\Task\ListTasksCategoryAction;
 use App\Application\Actions\Task\DeleteTaskAction;
 use App\Application\Actions\Task\CompleteTaskAction;
+use App\Application\Actions\Link\ListLinksAction;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
@@ -35,5 +35,12 @@ return function (App $app) {
         //Route for completing a task
         $group->put('/{id:[0-9]+}', CompleteTaskAction::class);
         
+    });
+
+    $app->group('/links', function (Group $group) {
+
+        //Route for listing all tasks        
+        $group->get('', ListLinksAction::class);
+
     });
 };
