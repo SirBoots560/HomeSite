@@ -47,4 +47,31 @@ class LinkRepository extends Repository
     {
         return array_values($this->links);
     }
+
+    /** 
+     * @param array $data
+     * @return void
+     * @throws AddLinkException
+     */
+    public function addTask(array $data): void
+    {
+        //Sanitizing form input
+        $title = $this->sanitizeString($data['title']);
+        $location = $this->sanitizeString($data['location']);
+        $new_window = $this->sanitizeInt( (int) $data['new_window']);
+
+        //Preparing MySQL statement
+        $statement = "INSERT INTO links VALUES(DEFAULT, '$title', '$location', $new_window)";
+
+        //Sanitizing MySQL statement
+        $statement = DBConfig::sanitize($statement);
+
+        //Inserting into DB
+        $response = DBConfig::query($statement);
+
+        //If insertion fails, throw AddTaskException
+        if(!$response){
+            throw new AddLinkException();
+        }
+    }
 }
