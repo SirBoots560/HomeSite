@@ -32,10 +32,10 @@ class LinkRepository extends Repository
             $location = $row['location'];
             $new_window = (int) $row['new_window'];
 
-            //Constructing a new task from temp variables
+            //Constructing a new link from temp variables
             $link = new Link($id, $title, $location, $new_window);
 
-            //Adding new task to tasks array
+            //Adding new link to links array
             array_push($this->links, $link);
         }
     }

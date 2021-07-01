@@ -6,7 +6,11 @@ use App\Application\Actions\Task\ListTasksAction;
 use App\Application\Actions\Task\ListTasksCategoryAction;
 use App\Application\Actions\Task\DeleteTaskAction;
 use App\Application\Actions\Task\CompleteTaskAction;
+
 use App\Application\Actions\Link\ListLinksAction;
+
+use App\Application\Actions\File\ListFilesAction;
+
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
@@ -18,6 +22,10 @@ return function (App $app) {
         return $response;
     });
 
+
+    /**
+     * Task Related Routes
+     */
     $app->group('/tasks', function (Group $group) {
 
         //Route for listing all tasks        
@@ -37,10 +45,25 @@ return function (App $app) {
         
     });
 
+
+    /**
+     * Link Related Routes
+     */
     $app->group('/links', function (Group $group) {
 
-        //Route for listing all tasks        
+        //Route for listing all links       
         $group->get('', ListLinksAction::class);
+
+    });
+
+
+    /**
+     * File Related routes
+     */
+    $app->group('/files', function (Group $group) {
+
+        //Route for listing all files        
+        $group->get('', ListFilesAction::class);
 
     });
 };

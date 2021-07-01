@@ -30,7 +30,7 @@ class Link implements JsonSerializable
     /**
      * @param int  $id
      * @param string    $title
-     * @param string    $category
+     * @param string    $location
      * @param int   $new_window
      */
     public function __construct(?int $id, string $title, string $location, int $new_window)
@@ -42,9 +42,9 @@ class Link implements JsonSerializable
     }
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
