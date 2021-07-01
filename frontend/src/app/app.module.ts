@@ -16,6 +16,7 @@ import { LinkListComponent } from './Components/link-list/link-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './Components/carousel/carousel.component';
 import { LinkFormComponent } from './Components/link-form/link-form.component';
+import { LinkEditComponent } from './Components/link-edit/link-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LinkFormComponent } from './Components/link-form/link-form.component';
     LinkComponent,
     LinkListComponent,
     CarouselComponent,
-    LinkFormComponent
+    LinkFormComponent,
+    LinkEditComponent
   ],
   imports: [
     BrowserModule,
