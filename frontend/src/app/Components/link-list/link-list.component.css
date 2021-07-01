@@ -24,6 +24,10 @@ header i {
 
 }
 
+header .edit {
+  margin-left: 15px;
+}
+
 header a:hover {
   opacity: 70%;
 }
