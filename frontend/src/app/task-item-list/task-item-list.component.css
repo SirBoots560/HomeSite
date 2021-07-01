@@ -13,8 +13,17 @@
     margin-left: 15px;
   }
 
+  header input:hover{
+    opacity: 70%;
+  }
+
   header label {
+    margin-left: 5px;
     color: #FFF;
+  }
+
+  header label:hover {
+    opacity: 70%;
   }
 
   header {
@@ -33,6 +42,20 @@
 
   header .description {
     font-style: italic;
+  }
+
+  header i {
+    color: #FFF;
+    margin-left: 15px;
+  }
+
+  header a:hover {
+    opacity: 70%;
+  }
+
+  header span {
+    color: #FFF;
+    margin-left: 5px;
   }
 
   section {

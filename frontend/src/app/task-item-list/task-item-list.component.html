@@ -1,13 +1,20 @@
 <header>
     <h1>Task List</h1>
     <p class="description">List of tasks that need to be completed.</p>
-  
-  <select name="category" id="category" #cat (change)="getTaskItems(cat.value)">
-    <option *ngFor='let category of lookupLists.categories_show' value="{{ category }}">{{ category }}</option>
-  </select>
+  <div class="controls">
+    <select name="category" id="category" #cat (change)="getTaskItems(cat.value)">
+      <option *ngFor='let category of lookupLists.categories_show' value="{{ category }}">{{ category }}</option>
+    </select>
 
-  <input type="checkbox" id="complete" (change)="toggleVal(cat.value)"/>
-  <label for="complete"> Show Complete Tasks?</label>
+    <input type="checkbox" id="complete" (change)="toggleVal(cat.value)"/>
+    <label for="complete"> Show Complete Tasks?</label>
+
+    <a routerLink="/add">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      <span>Add New Task</span>
+    </a>
+  </div>
+  
 
   <div *ngIf="taskItems">{{ taskItems | categoryList }}</div>
 </header>
