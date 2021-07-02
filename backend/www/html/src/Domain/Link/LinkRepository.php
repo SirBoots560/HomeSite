@@ -53,7 +53,7 @@ class LinkRepository extends Repository
      * @return void
      * @throws AddLinkException
      */
-    public function addTask(array $data): void
+    public function addLink(array $data): void
     {
         //Sanitizing form input
         $title = $this->sanitizeString($data['title']);
@@ -74,4 +74,33 @@ class LinkRepository extends Repository
             throw new AddLinkException();
         }
     }
+
+    /** 
+     * @param array $data
+     * @return void
+     * @throws LinkNotFoundException
+     */
+    public function editLink(array $data): void
+    {
+        //Sanitizing form input
+        $id = $this->sanitizeInt( (int) $data['id']);
+        $title = $this->sanitizeString($data['title']);
+        $location = $this->sanitizeString($data['location']);
+        $new_window = $this->sanitizeInt( (int) $data['new_window']);
+
+        //Preparing MySQL statement
+        $statement = "UPDATE links SET `title` = '$title', `location` = '$location', `new_window` = '$new_window' WHERE `id` = '$id'";
+
+        //Sanitizing MySQL statement
+        $statement = DBConfig::sanitize($statement);
+
+        //Inserting into DB
+        $response = DBConfig::query($statement);
+
+        //If insertion fails, throw AddTaskException
+        if(!$response){
+            throw new LinkNotFoundException();
+        }
+    }
+    
 }

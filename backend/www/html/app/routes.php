@@ -9,6 +9,7 @@ use App\Application\Actions\Task\CompleteTaskAction;
 
 use App\Application\Actions\Link\ListLinksAction;
 use App\Application\Actions\Link\AddLinkAction;
+use App\Application\Actions\Link\EditLinkAction;
 
 use App\Application\Actions\File\ListFilesAction;
 use App\Application\Actions\File\ListFilesCategoryAction;
@@ -58,6 +59,9 @@ return function (App $app) {
 
         //Route for adding link      
         $group->post('/add', AddLinkAction::class);
+
+        //Route for editing a link      
+        $group->put('/edit', EditLinkAction::class);
 
     });
 

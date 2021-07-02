@@ -5,7 +5,7 @@ namespace App\Application\Actions\Link;
 
 use Psr\Http\Message\ResponseInterface as Response;
 
-class AddLinkAction extends LinkAction
+class EditLinkAction extends LinkAction
 {
     /**
      * {@inheritdoc}
@@ -15,9 +15,11 @@ class AddLinkAction extends LinkAction
 
         $data = $this->getFormData();
 
-        $this->linkRepository->addLink($data);
+        $this->linkRepository->editLink($data);
 
-        $this->logger->info("A link was added.");
+        $id = $data['id'];
+
+        $this->logger->info("Link with ID ${id} was edited.");
 
         return $this->respondWithData();
     }
