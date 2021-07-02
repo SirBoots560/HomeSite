@@ -52,4 +52,8 @@
 
   </ul>
   <button type="submit" [disabled]="!form.valid">Save</button>
+
+  <a class="delete" (click)="onDelete(form.value)">
+    Remove
+  </a>
 </form>
