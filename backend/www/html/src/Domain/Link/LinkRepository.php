@@ -102,5 +102,30 @@ class LinkRepository extends Repository
             throw new LinkNotFoundException();
         }
     }
+
+    /** 
+     * @param array $data
+     * @return void
+     * @throws LinkNotFoundException
+     */
+    public function deleteLink(int $id): void
+    {
+        //Sanitizing input
+        $id = $this->sanitizeInt( (int) $id);
+
+        //Preparing MySQL statement
+        $statement = "DELETE FROM links WHERE `id` = $id";
+
+        //Sanitizing MySQL statement
+        $statement = DBConfig::sanitize($statement);
+
+        //Inserting into DB
+        $response = DBConfig::query($statement);
+
+        //If insertion fails, throw AddTaskException
+        if(!$response){
+            throw new LinkNotFoundException();
+        }
+    }
     
 }

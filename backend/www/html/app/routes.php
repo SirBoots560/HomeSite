@@ -9,6 +9,7 @@ use App\Application\Actions\Task\CompleteTaskAction;
 
 use App\Application\Actions\Link\ListLinksAction;
 use App\Application\Actions\Link\AddLinkAction;
+use App\Application\Actions\Link\DeleteLinkAction;
 use App\Application\Actions\Link\EditLinkAction;
 
 use App\Application\Actions\File\ListFilesAction;
@@ -59,6 +60,9 @@ return function (App $app) {
 
         //Route for adding link      
         $group->post('/add', AddLinkAction::class);
+
+        //Route for deleting a link
+        $group->delete('/{id:[0-9]+}', DeleteLinkAction::class);
 
         //Route for editing a link      
         $group->put('/edit', EditLinkAction::class);
