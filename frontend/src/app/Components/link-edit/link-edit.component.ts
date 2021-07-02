@@ -72,7 +72,7 @@ export class LinkEditComponent implements OnInit {
 
   onDelete(linkItem: any) { 
     this.linkService.delete(linkItem).subscribe(() => {
-      this.getLinks();
+      this.router.navigate(['/links']);
     });
   }
 
