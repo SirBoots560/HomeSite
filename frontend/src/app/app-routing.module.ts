@@ -5,6 +5,7 @@ import { HomeComponent } from './Components/home/home.component';
 
 import { LinkListComponent } from './Components/link-list/link-list.component';
 import { LinkFormComponent } from './Components/link-form/link-form.component';
+import { LinkEditComponent } from './Components/link-edit/link-edit.component';
 
 import { TaskItemFormComponent } from './Components/task-item-form/task-item-form.component';
 import { TaskItemListComponent } from './Components/task-item-list/task-item-list.component';
@@ -13,8 +14,9 @@ const routes: Routes = [
 
 { path: 'home', component: HomeComponent },
 
-{ path: 'add-link', component: LinkFormComponent },
 { path: 'links', component: LinkListComponent },
+{ path: 'add-link', component: LinkFormComponent },
+{ path: 'edit-link', component: LinkEditComponent },
 
 { path: 'add-task', component: TaskItemFormComponent },
 { path: ':category', component: TaskItemListComponent },

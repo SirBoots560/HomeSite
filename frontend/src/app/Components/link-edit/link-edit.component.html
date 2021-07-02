@@ -1,1 +1,55 @@
-<p>link-edit works!</p>
+<header>
+  <h1>Admin Links</h1>
+  <h2>Edit Link</h2>
+
+  <select #cat (change)="change(cat.value)">
+    <option selected="selected" value=-1></option>
+    <option *ngFor="let link of links" value="{{ link.id }}">{{ link.title }}</option>
+  </select>
+</header>
+
+<form *ngIf="linkID != -1" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+  <ul>
+
+    <!--ID-->
+    <input type="hidden" name="id" formControlName="id">
+
+    <!--Title-->
+    <li>
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" formControlName="title">
+    </li>
+
+    <!--Title Error Displays-->
+    <div *ngIf="title.hasError('required')" class="error">
+      Title must contain a value!
+    </div>
+    <div *ngIf="title.hasError('pattern')" class="error">
+      Title must be alphanumeric!
+    </div>
+
+
+    <!--Location-->
+    <li>
+      <label for="location">Location</label>
+      <input type="text" name="location" id="location" formControlName="location">
+    </li>
+
+    <!-- Location Error Displays -->
+    <div *ngIf="location.hasError('required')" class="error">
+      Location must contain a value!
+    </div>
+
+
+    <!--New Window-->
+    <li>
+      <label for="new_window">New Window</label>
+      <select name="new_window" id="new_window" formControlName="new_window">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </li>
+
+  </ul>
+  <button type="submit" [disabled]="!form.valid">Save</button>
+</form>
